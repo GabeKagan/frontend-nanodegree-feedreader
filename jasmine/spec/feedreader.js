@@ -65,6 +65,9 @@ $(function() {
      * hiding/showing of the menu element.
      */
     it('is hidden by default', function(){
+        //The menu is displayed by removing the "menu-hidden" class from the main HTML body tag.
+        //Specific Javascript (jQuery): toggleClass
+        //expect()
 
     });
      /* TODO: Write a test that ensures the menu changes
