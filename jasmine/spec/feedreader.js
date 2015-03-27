@@ -80,12 +80,19 @@ $(function() {
           * clicked and does it hide when clicked again.
           */
         describe('The menu icon', function() {
+            //Get iconCondition equivalent to our test.
+            
+            beforeEach(function() {
+                $('.menu-icon-link').trigger('click'); 
+                this.iconCondition = $('.menu').is(':visible'); 
+                console.log(this.iconCondition); 
+            });  
 
             it('displays the menu when hidden', function(){
-
+                expect(this.iconCondition).toBe(true);
             });
             it('hides the menu when displayed', function(){
-
+                expect(this.iconCondition).toBe(false);
             });            
 
         });
