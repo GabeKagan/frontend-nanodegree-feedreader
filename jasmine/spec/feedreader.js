@@ -59,22 +59,37 @@ $(function() {
     /* TODO: Write a new test suite named "The menu" */
     describe('The menu', function() {
 
+    //Some implementation details taken from http://discussions.udacity.com/t/testing-if-menu-is-visible-hidden-after-menu-icon-is-clicked/10175
+
     /* TODO: Write a test that ensures the menu element is
      * hidden by default. You'll have to analyze the HTML and
      * the CSS to determine how we're performing the
      * hiding/showing of the menu element.
      */
-    it('is hidden by default', function(){
-        //The menu is displayed by removing the "menu-hidden" class from the main HTML body tag.
-        //Specific Javascript (jQuery): toggleClass
-        //expect()
+        it('is hidden by default', function(){
+            /*The menu is displayed by removing the "menu-hidden" class from the 
+            main HTML body tag with the jQuery method toggleClass.
+            Does this mean you can use jQuery commands without adding special jQuery understanding functionality?
+            */
+            expect($('body').hasClass('menu-hidden')).toBe(true); 
+        });
 
+        /* TODO: Write a test that ensures the menu changes
+          * visibility when the menu icon is clicked. This test
+          * should have two expectations: does the menu display when
+          * clicked and does it hide when clicked again.
+          */
+        describe('The menu icon', function() {
+
+            it('displays the menu when hidden', function(){
+
+            });
+            it('hides the menu when displayed', function(){
+
+            });            
+
+        });
     });
-     /* TODO: Write a test that ensures the menu changes
-      * visibility when the menu icon is clicked. This test
-      * should have two expectations: does the menu display when
-      * clicked and does it hide when clicked again.
-      */
 
     /* TODO: Write a new test suite named "Initial Entries" */
 
@@ -91,6 +106,6 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-    });
+
 
 }());
