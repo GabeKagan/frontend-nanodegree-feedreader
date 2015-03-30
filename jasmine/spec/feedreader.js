@@ -69,7 +69,7 @@ $(function() {
         it('is hidden by default', function(){
             /*The menu is displayed by removing the "menu-hidden" class from the 
             main HTML body tag with the jQuery method toggleClass.
-            Does this mean you can use jQuery commands without adding special jQuery understanding functionality?
+            It looks like Jasmine can use jQuery statements by default, but not those special jQuery matchers.
             */
             expect($('body').hasClass('menu-hidden')).toBe(true); 
         });
@@ -80,6 +80,7 @@ $(function() {
           * clicked and does it hide when clicked again.
           */
         describe('The menu icon', function() {
+            
             //Get iconCondition equivalent to our test.
             
             beforeEach(function() {
@@ -88,18 +89,26 @@ $(function() {
                 console.log(this.iconCondition); 
             });  
 
-            it('displays the menu when hidden', function(){
-                expect(this.iconCondition).toBe(true);
+            it('displays the menu if the menu is hidden', function(){
+                expect($('body')).toHaveClass("menu");
+                //expect(this.iconCondition).toBeTruthy();
             });
-            it('hides the menu when displayed', function(){
-                expect(this.iconCondition).toBe(false);
-            });            
+            it('hides the menu if the menu is displayed', function(){
+                expect($('body')).toHaveClass("menu-hidden");
+                //expect(this.iconCondition).toBeFalsy();
+            });  
+
+          
 
         });
     });
 
+    describe('Initial entries', function() {
     /* TODO: Write a new test suite named "Initial Entries" */
 
+        it('displays entries when loadFeed() is called', function(){
+
+        });
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
          * a single .entry element within the .feed container.
@@ -107,12 +116,19 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
 
-    /* TODO: Write a new test suite named "New Feed Selection"
+    });
 
+    describe('New feed selection', function() {
+    /* TODO: Write a new test suite named "New Feed Selection" */
+
+        it('changes the data when loadFeed() is called', function(){
+            //This might need timeouts to handle asynch.
+        });
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+    });
 
 
 }());
