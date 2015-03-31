@@ -71,7 +71,7 @@ $(function() {
             main HTML body tag with the jQuery method toggleClass.
             It looks like Jasmine can use jQuery statements by default, but not those special jQuery matchers.
             */
-            expect($('body').hasClass('menu-hidden')).toBe(true); 
+            expect($('body')).toHaveClass("menu-hidden");
         });
 
         /* TODO: Write a test that ensures the menu changes
@@ -81,25 +81,17 @@ $(function() {
           */
         describe('The menu icon', function() {
             
-            //Get iconCondition equivalent to our test.
-            
+            //Simulates clicking the little menu icon in the upper left.
             beforeEach(function() {
                 $('.menu-icon-link').trigger('click'); 
-                this.iconCondition = $('.menu').is(':visible'); 
-                console.log(this.iconCondition); 
             });  
 
             it('displays the menu if the menu is hidden', function(){
-                expect($('body')).toHaveClass("menu");
-                //expect(this.iconCondition).toBeTruthy();
+                expect($('body')).toHaveClass("");
             });
             it('hides the menu if the menu is displayed', function(){
                 expect($('body')).toHaveClass("menu-hidden");
-                //expect(this.iconCondition).toBeFalsy();
             });  
-
-          
-
         });
     });
 
