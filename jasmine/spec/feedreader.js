@@ -97,8 +97,21 @@ $(function() {
 
     describe('Initial entries', function() {
     /* TODO: Write a new test suite named "Initial Entries" */
+        var entryAmount;
 
-        it('displays entries when loadFeed() is called', function(){
+        beforeEach(function(done) {
+            setTimeout(function() {
+            entryAmount = $(".entry").length;
+            done();
+            }, 1000);
+        });
+        
+
+        it('display when loadFeed() is called', function(done){
+            expect(entryAmount).not.toBe(0); //Needs to be properly timed.
+            console.log(entryAmount);
+            done();
+            //Start by making sure feed isn't empty.
 
         });
         /* TODO: Write a test that ensures when the loadFeed
