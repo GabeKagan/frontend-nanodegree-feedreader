@@ -99,8 +99,6 @@ $(function() {
     /* TODO: Write a new test suite named "Initial Entries" */
         var entryAmount;
 
-
-
         beforeEach(function(done) {
             setTimeout(function() {
             entryAmount = $(".entry").length;
@@ -136,18 +134,24 @@ $(function() {
 
     describe('New feed selection', function() {
     /* TODO: Write a new test suite named "New Feed Selection" */
-        var entryContents;
+        var entryContents; 
         beforeEach(function(done) {
             setTimeout(function() {
-            entryContents = $(".feed").html();
-            done();
+                //entryContents = $(".feed").html();
+                done();
             }, 1000);
         });
 
         it('changes the data when loadFeed() is called', function(done){
-            //console.log(entryContents);
-            //expect($(".feed")).not.toContainHTML(entryContents);
-            //This might need timeouts to handle asynch.
+
+            spyOn(window, 'loadFeed').and.callThrough(); //Might need to add .and.callThrough()
+            for(var i = 0; i < allFeeds.length; ++i){
+                window.loadFeed(i);
+                entryContents = $(".feed").html(); //Does not update when a new feed is loaded
+                console.log(entryContents); 
+                expect($(".entry-link").html()).not.toBeUndefined(); //Useful, but not enough.
+                expect($(".entry-link").html()).not.toBeEmpty();
+            }
             done();
         });
         /* TODO: Write a test that ensures when a new feed is loaded
