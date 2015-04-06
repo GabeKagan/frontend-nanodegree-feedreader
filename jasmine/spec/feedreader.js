@@ -99,17 +99,28 @@ $(function() {
     /* TODO: Write a new test suite named "Initial Entries" */
         var entryAmount;
 
+
+
         beforeEach(function(done) {
             setTimeout(function() {
             entryAmount = $(".entry").length;
             done();
-            }, 1000);
+            }, 500);
+            
         });
-        
+
+        //This function is not required by the assignment.
+        it('have their data fetched by loadFeed()', function(done){
+            spyOn(window, 'loadFeed');
+            window.loadFeed(0);
+            expect(window.loadFeed).toHaveBeenCalled();
+            done();
+        });
 
         it('display when loadFeed() is called', function(done){
+
             expect(entryAmount).not.toBe(0); //Needs to be properly timed.
-            console.log(entryAmount);
+            //console.log(entryAmount);
             done();
             //Start by making sure feed isn't empty.
 
@@ -125,9 +136,19 @@ $(function() {
 
     describe('New feed selection', function() {
     /* TODO: Write a new test suite named "New Feed Selection" */
+        var entryContents;
+        beforeEach(function(done) {
+            setTimeout(function() {
+            entryContents = $(".feed").html();
+            done();
+            }, 1000);
+        });
 
-        it('changes the data when loadFeed() is called', function(){
+        it('changes the data when loadFeed() is called', function(done){
+            //console.log(entryContents);
+            //expect($(".feed")).not.toContainHTML(entryContents);
             //This might need timeouts to handle asynch.
+            done();
         });
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
