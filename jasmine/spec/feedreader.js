@@ -118,9 +118,7 @@ $(function() {
         it('display when loadFeed() is called', function(done){
 
             expect(entryAmount).not.toBe(0); //Needs to be properly timed.
-            //console.log(entryAmount);
             done();
-            //Start by making sure feed isn't empty.
 
         });
         /* TODO: Write a test that ensures when the loadFeed
@@ -134,10 +132,41 @@ $(function() {
 
     describe('New feed selection', function() {
     /* TODO: Write a new test suite named "New Feed Selection" */
+    var originalEntry, entryContents;    
+    beforeAll   (function(done) {
+        setTimeout(function() {
+            originalEntry = $(".feed").html();
+            spyOn(window, 'loadFeed').and.callThrough();
+            window.loadFeed(1);
+            
+            console.log(originalEntry);
+            done();
+        }, 100);
+        
+    });
+
+        it('changes the data when loadFeed() is called', function(done){
+            //This timeout is necessary in order to ensure the assignment goes through after the change.
+            setTimeout(function() { 
+                entryContents = $(".feed").html() 
+                console.log(entryContents);
+            }, 200);
+            
+            expect(window.loadFeed).toHaveBeenCalledWith(1);
+            expect(originalEntry).not.toEqual(entryContents);
+            done();
+        });
+        /* Remove this nonfunctioning code when functioning code exists. 
         var entryContents; 
         beforeEach(function(done) {
             setTimeout(function() {
-                //entryContents = $(".feed").html();
+                for(var i = 0; i < allFeeds.length; ++i){
+                    (function(num){ 
+                        window.loadFeed(num); 
+                    })(i);
+                    entryContents = $(".feed").html();
+                    console.log(entryContents);
+                }
                 done();
             }, 1000);
         });
@@ -145,15 +174,15 @@ $(function() {
         it('changes the data when loadFeed() is called', function(done){
 
             spyOn(window, 'loadFeed').and.callThrough(); //Might need to add .and.callThrough()
-            for(var i = 0; i < allFeeds.length; ++i){
-                window.loadFeed(i);
-                entryContents = $(".feed").html(); //Does not update when a new feed is loaded
-                console.log(entryContents); 
+                //entryContents = $(".feed").html(); //Does not update when a new feed is loaded
+                
                 expect($(".entry-link").html()).not.toBeUndefined(); //Useful, but not enough.
                 expect($(".entry-link").html()).not.toBeEmpty();
-            }
             done();
         });
+
+        */
+
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
