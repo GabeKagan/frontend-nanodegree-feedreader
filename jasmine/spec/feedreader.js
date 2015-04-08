@@ -92,7 +92,7 @@ $(function() {
 
     describe('New feed selection', function() {
     //In this test, we compare the entire feed contents to make sure they've changed.
-    //This may be inefficient on longer and more complicated feeds, though.
+    //This may be inefficient on longer and more complicated feeds, though...
     var originalEntry, entryContents;    
     beforeAll (function(done) {
         setTimeout(function() {
