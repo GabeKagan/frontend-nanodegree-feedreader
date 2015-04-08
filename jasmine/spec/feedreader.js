@@ -108,7 +108,7 @@ $(function() {
         it('changes the data when loadFeed() is called', function(done){
             //This timeout is necessary in order to ensure the assignment goes through after the change.
             setTimeout(function() { 
-                entryContents = $(".feed").html() 
+                entryContents = $(".feed").html();
                 //console.log(entryContents);
             }, 200);
         
